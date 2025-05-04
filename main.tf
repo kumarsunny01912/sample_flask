@@ -52,6 +52,7 @@ resource "aws_instance" "flask_app" {
 
   user_data = <<-EOF
               #!/bin/bash
+              exec > /var/log/user-data.log 2>&1
               yum update -y
               yum install -y python3 git
               pip3 install flask
