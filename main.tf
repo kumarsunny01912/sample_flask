@@ -56,7 +56,8 @@ resource "aws_instance" "flask_app" {
               yum install -y python3 git
               pip3 install flask
               git clone https://github.com/kumarsunny01912/sample_flask.git /home/ec2-user/app
-              python3 /home/ec2-user/app/app.py &
+              cd /home/ec2-user/app
+              nohup python3 app.py > output.log 2>&1 &
               EOF
 
   tags = {
